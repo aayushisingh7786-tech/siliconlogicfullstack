@@ -1,14 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
-# View for the Home Page
+from .models import Student # Import the model
 def home(request):
-    # This renders an HTML template named 'home.html'
-    return render(request, 'home.html')
-# View for the About Page
-def about(request):
-    return render(request, 'about.html')
-
-# View for the Contact Page
-def contact(request):
-    return render(request, 'contact.html')
+# Fetch ALL students from the database
+    all_students = Student.objects.all()
+    # Send the data to the template inside a 'context' dictionary
+    return render(request, 'home.html', {'students': all_students})
