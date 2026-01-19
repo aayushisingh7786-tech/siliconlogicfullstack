@@ -1,19 +1,13 @@
 
-    <!DOCTYPE html>
-    <html>
-        <body>
-    <h1>Student List</h1>
-    <ul>
-        {% for student in students %}
-        <li>
-            <strong>{{ student.name }}</strong>
-            - {{ student.course }}
-            (Roll No: {{ student.roll_no }})
-        </li>
-        {% empty %}
-        <li>No students found yet.</li>
-        {% endfor %}
-    </ul>
-    </body>
+        <nav>
+            <a href="/">Home</a> |
+            {% if user.is_authenticated %}
+              <a href="/dashboard/">Dashboard</a> |
+              <span>Hello, {{ user.username }}</span>
+        {% else %}
+            <a href="/register/">Register</a> |
+            <a href="/login/">Login</a>
+        {% endif %}
+            </nav>
+          
     
-    </html>

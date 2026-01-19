@@ -20,7 +20,9 @@ from core import views # Import your views from the core app
 
 urlpatterns = [
    path('admin/', admin.site.urls),
-   path('', views.home, name='home'), # Empty path '' = Homepage
-  # path('about/', views.about, name='about'), # /about/
-   #path('contact/', views.contact, name='contact'), # /contact/
+   #path('', views.home, name='home'),
+   path('register/', views.register_view, name='register'),
+   path('login/', views.login_view, name='login'),
+   path('logout/', views.logout_view, name='logout'),
+   path('dashboard/', views.dashboard, name='dashboard'),
 ]
