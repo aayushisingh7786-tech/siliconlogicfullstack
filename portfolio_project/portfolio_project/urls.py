@@ -21,6 +21,6 @@ from core import views # Import your views from the core app
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('', views.home, name='home'), # Empty path '' = Homepage
-   path('about/', views.about, name='about'), # /about/
-   path('contact/', views.contact, name='contact'), # /contact/
+  # path('about/', views.about, name='about'), # /about/
+   #path('contact/', views.contact, name='contact'), # /contact/
 ]
