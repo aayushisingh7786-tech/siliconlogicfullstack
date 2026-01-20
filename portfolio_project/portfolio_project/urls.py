@@ -38,7 +38,7 @@ urlpatterns = [
 #from django.contrib import admin
 #from django.urls import path, include
 #from rest_framework.routers import DefaultRouter
-from core import views
+#from core import views
 
 
 # Initialize the router and register the StudentViewSet
@@ -67,10 +67,15 @@ from core import views
 #]
 # In core/views.py
 
+from django.contrib import admin
 from django.urls import path
 from core import views # Or from . import views if in the same app's urls.py
 
+
+
 urlpatterns = [
-    # ... other paths
+    path('admin/', admin.site.urls),
     path('spa/', views.student_spa, name='spa'),
+
+    
 ]
