@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+load_dotenv() # This loads the .env file
 
 from pathlib import Path
 
@@ -20,10 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v92o8$sqt)n4svkal9r3icqj^w^qv3p+1j*vb!+8cm9+yt^@8!'
+#SECRET_KEY =
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('django-insecure-v92o8$sqt)n4svkal9r3icqj^w^qv3p+1j*vb!+8cm9+yt^@8!')
+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# This checks if the text 'True' is in the .env file
+DEBUG = os.getenv('DEBUG') == 'True'
+
+ # This loads the .env file
+
+#'django-insecure-v92o8$sqt)n4svkal9r3icqj^w^qv3p+1j*vb!+8cm9+yt^@8!'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -130,3 +144,15 @@ STATIC_URL = 'static/'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# PRODUCTION SECURITY SETTINGS
+if not DEBUG:
+    # Only use these on the live server, not locally
+    # 1. Force HTTPS
+    SECURE_SSL_REDIRECT = True
+    # 2. Secure Cookies (Data sends only over HTTPS)
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    # 3. Browser Security Headers (optional, but recommended)
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
