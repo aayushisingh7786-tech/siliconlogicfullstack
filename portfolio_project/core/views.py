@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .serializers import StudentSerializer
+#from .serializers import StudentSerializer
 
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,14 +9,16 @@ from django.contrib.auth.decorators import login_required # Protects pages
 from django.shortcuts import render, redirect 
 # Ensure redirect is imported
 from django.shortcuts import render
-from .models import Student
+#from .models import Student
 
-def home(request):
-    all_students = Student.objects.all()
-    return render(request, 'home.html', {'students': all_students})
 
-def student_spa(request):
-    return render(request, 'students_spa.html')
+
+#def home(request):
+ #   all_students = Student.objects.all()
+   # return render(request, 'home.html', {'students': all_students})
+
+#def student_spa(request):
+   # return render(request, 'students_spa.html')
 
 # ... (any other existing views like 'home' go here) ...
 # 1. REGISTER VIEW
@@ -56,8 +58,8 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 # API ViewSet
-class StudentViewSet(viewsets.ModelViewSet):
+#class StudentViewSet(viewsets.ModelViewSet):
     # 1. What data do we want? (All students)
-    queryset = Student.objects.all()
+   # queryset = Student.objects.all()
     # 2. How do we turn it into JSON? (Use the serializer)
-    serializer_class = StudentSerializer
+   # serializer_class = StudentSerializer
